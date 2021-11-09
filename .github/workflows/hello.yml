@@ -13,6 +13,6 @@ jobs:
         run: |
           echo "Hello World!"
       - name: Get date
-        run: echo date
+        run: date
       - name: Get list
-        run: echo ls -l
+        run: ls -l
