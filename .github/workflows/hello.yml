@@ -1,18 +1,18 @@
-name: Hello World!
+#name: Hello World!
 
-on:
-  push:
-    branches:
-      - master
+#on:
+#  push:
+#    branches:
+#      - master
 
-jobs:
-  hello_world_job:
-    runs-on: ubuntu-18.04
-    steps:
-      - name: Say hello
-        run: |
-          echo "Hello World!"
-      - name: Get date
-        run: date
-      - name: Get list
-        run: ls -l
+#jobs:
+#  hello_world_job:
+#    runs-on: ubuntu-18.04
+#    steps:
+#      - name: Say hello
+#        run: |
+#          echo "Hello World!"
+#      - name: Get date
+#        run: date
+#      - name: Get list
+#        run: ls -l
