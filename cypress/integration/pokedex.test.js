@@ -6,4 +6,9 @@ describe('Pokedex', function () {
       'Pokémon and Pokémon character names are trademarks of Nintendo.',
     );
   });
+  it('The system can proceed to next page', function () {
+    cy.contains('ivysaur').click();
+    cy.contains('Next').click();
+    cy.contains('venusaur');
+  });
 });
