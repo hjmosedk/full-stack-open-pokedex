@@ -34,7 +34,8 @@ jobs:
       #    heroku_app_name: ${{secrets.HEROKU_APP_NAME}}
       #    heroku_email: ${{secrets.MY_EMAIL}}
       - name: deploy to heroku
-        env: 
+        env:
           HEROKU_API_KEY: ${{secrets.HEROKU_API_KEY}}
-        run: heroku login
-        run: git push heroku master
+        run: |
+          heroku login 
+          git push heroku master
