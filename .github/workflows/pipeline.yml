@@ -37,6 +37,7 @@ jobs:
         env:
           HEROKU_API_KEY: ${{secrets.HEROKU_API_KEY}}
         run: |
+          npm install -g heroku
           heroku login
           heroku git:remote -a ${{secrets.HEROKU_APP_NAME}}
           git remote
