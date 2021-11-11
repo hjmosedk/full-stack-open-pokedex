@@ -19,14 +19,14 @@ jobs:
         run: npm run eslint
       - name: build
         run: npm run build
-      - name: test
-        run: npm run test
-      - name: e2e test
-        uses: cypress-io/github-action@v2
-        with:
-          command: npm run test:e2e
-          start: npm run start-prod
-          wait-on: http://localhost:5000
+      #- name: test
+      #  run: npm run test
+      #- name: e2e test
+      #  uses: cypress-io/github-action@v2
+      #  with:
+      #    command: npm run test:e2e
+      #    start: npm run start-prod
+      #    wait-on: http://localhost:5000
       #- name: deploy
       #  uses: akhileshns/heroku-deploy@v3.12.12
       #  with:
@@ -37,5 +37,6 @@ jobs:
         env:
           HEROKU_API_KEY: ${{secrets.HEROKU_API_KEY}}
         run: |
-          heroku login 
-          git push heroku master
+          heroku login
+          git remote
+        # git push heroku master
