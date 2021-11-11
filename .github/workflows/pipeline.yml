@@ -34,4 +34,5 @@ jobs:
           heroku_app_name: ${{secrets.HEROKU_APP_NAME}}
           heroku_email: ${{secrets.MY_EMAIL}}
           justlogin: true
+      - name: manual deploy
         run: git push heroku master
