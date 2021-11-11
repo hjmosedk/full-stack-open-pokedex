@@ -27,12 +27,14 @@ jobs:
           command: npm run test:e2e
           start: npm run start-prod
           wait-on: http://localhost:5000
-      - name: deploy
-        uses: akhileshns/heroku-deploy@v3.12.12
-        with:
-          heroku_api_key: ${{secrets.HEROKU_API_KEY}}
-          heroku_app_name: ${{secrets.HEROKU_APP_NAME}}
-          heroku_email: ${{secrets.MY_EMAIL}}
-          justlogin: true
-      - name: manual deploy
+      #- name: deploy
+      #  uses: akhileshns/heroku-deploy@v3.12.12
+      #  with:
+      #    heroku_api_key: ${{secrets.HEROKU_API_KEY}}
+      #    heroku_app_name: ${{secrets.HEROKU_APP_NAME}}
+      #    heroku_email: ${{secrets.MY_EMAIL}}
+      - name: deploy to heroku
+        env: 
+          HEROKU_API_KEY: ${{secrets.HEROKU_API_KEY}}
+        run: heroku login
         run: git push heroku master
