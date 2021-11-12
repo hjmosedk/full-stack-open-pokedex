@@ -15,22 +15,21 @@ jobs:
           node-version: '16.x'
       - name: npm install
         run: npm install
-      - name: lint
-        run: npm run eslint
-      - name: build
-        run: npm run build
-      - name: test
-        run: npm run test
-      - name: e2e test
-        uses: cypress-io/github-action@v2
-        with:
-          command: npm run test:e2e
-          start: npm run start-prod
-          wait-on: http://localhost:5000
+      #   - name: lint
+      #     run: npm run eslint
+      #   - name: build
+      #     run: npm run build
+      #   - name: test
+      #     run: npm run test
+      #   - name: e2e test
+      #     uses: cypress-io/github-action@v2
+      #     with:
+      #       command: npm run test:e2e
+      #       start: npm run start-prod
+      #       wait-on: http://localhost:5000
       - name: deploy
         uses: akhileshns/heroku-deploy@v3.12.12
         with:
           heroku_api_key: ${{secrets.HEROKU_API_KEY}}
-          heroku_app_name: ${{secrets.HEROKU_APP_NAME}}
+          heroku_app_name: 'fathomless-peak-08341'
           heroku_email: ${{secrets.MY_EMAIL}}
-          dontautocreate: true
