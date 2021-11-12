@@ -19,26 +19,17 @@ jobs:
         run: npm run eslint
       - name: build
         run: npm run build
-      #- name: test
-      #  run: npm run test
-      #- name: e2e test
-      #  uses: cypress-io/github-action@v2
-      #  with:
-      #    command: npm run test:e2e
-      #    start: npm run start-prod
-      #    wait-on: http://localhost:5000
-      #- name: deploy
-      #  uses: akhileshns/heroku-deploy@v3.12.12
-      #  with:
-      #    heroku_api_key: ${{secrets.HEROKU_API_KEY}}
-      #    heroku_app_name: ${{secrets.HEROKU_APP_NAME}}
-      #    heroku_email: ${{secrets.MY_EMAIL}}
-      - name: deploy to heroku
-        env:
-          HEROKU_API_KEY: ${{secrets.HEROKU_API_KEY}}
-        run: |
-          npm install -g heroku
-          heroku login
-          heroku git:remote -a ${{secrets.HEROKU_APP_NAME}}
-          git remote
-        # git push heroku master
+      - name: test
+        run: npm run test
+      - name: e2e test
+        uses: cypress-io/github-action@v2
+        with:
+          command: npm run test:e2e
+          start: npm run start-prod
+          wait-on: http://localhost:5000
+      - name: deploy
+        uses: akhileshns/heroku-deploy@v3.0.0
+        with:
+          heroku_api_key: ${{secrets.HEROKU_API_KEY}}
+          heroku_app_name: ${{secrets.HEROKU_APP_NAME}}
+          heroku_email: ${{secrets.MY_EMAIL}}
