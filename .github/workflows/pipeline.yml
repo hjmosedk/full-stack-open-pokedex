@@ -33,6 +33,6 @@ jobs:
           heroku_api_key: ${{secrets.HEROKU_API_KEY}}
           heroku_app_name: ${{secrets.HEROKU_APP_NAME}}
           heroku_email: ${{secrets.MY_EMAIL}}
-          healtcheck: "fathomless-peak-08341.herokuapp.com/healthcheck"
+          healthcheck: "https://fathomless-peak-08341.herokuapp.com/health"
           checkstring: "All systems are green!"
           delay: 15
