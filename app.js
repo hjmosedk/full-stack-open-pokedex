@@ -14,7 +14,7 @@ app.get('/version', (request, response) => {
   response.send('2.0.1');
 });
 
-app.get('/helleWorld', (request, response) => {
+app.get('/helloWorld', (request, response) => {
   response.json({ hello: 'world' });
 });
 
