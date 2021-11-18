@@ -16,35 +16,36 @@ jobs:
       - uses: actions/setup-node@v1
         with:
           node-version: '16.x'
-      #- name: npm install
-      #  run: npm install
-      #- name: lint
-      #  run: npm run eslint
-      #- name: build
-      #  run: npm run build
-      #- name: test
-      #  run: npm run test
-      #- name: e2e test
-      #  uses: cypress-io/github-action@v2
-      #  with:
-      #    command: npm run test:e2e
-      #    start: npm run start-prod
-      #    wait-on: http://localhost:5000
-      #- name: Bump version and push tag
-      #  if: ${{ github.event_name == 'push' }}
-      #  uses: anothrNick/github-tag-action@1.36.0
-      #  env:
-      #    GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-      #    DEFAULT_BUMP: patch
-      #    INITIAL_VERSION: 2.0.1
-      #- name: deploy
-      #  if: ${{ github.event_name == 'push' }}
-      #  uses: akhileshns/heroku-deploy@v3.12.12
-      #  with:
-      #    heroku_api_key: ${{secrets.HEROKU_API_KEY}}
-      #    heroku_app_name: ${{secrets.HEROKU_APP_NAME}}
-      #    heroku_email: ${{secrets.MY_EMAIL}}
-      #    healthcheck: 'https://fathomless-peak-08341.herokuapp.com/health'
-      #    checkstring: 'All systems are green!'
-      #    delay: 15
-      #    rollbackonhealthcheckfailed: true
+      - name: npm install
+        run: npm install
+      - name: lint
+        run: npm run eslint
+      - name: build
+        run: npm run build
+      - name: test
+        run: npm run test
+      - name: e2e test
+        uses: cypress-io/github-action@v2
+        with:
+          command: npm run test:e2e
+          start: npm run start-prod
+          wait-on: http://localhost:5000
+      - name: Bump version and push tag
+        if: ${{ github.event_name == 'push' }}
+         if: ${{ !contains(toJson(github.event.commits.*.message), '#skip') }} 
+        uses: anothrNick/github-tag-action@1.36.0
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          DEFAULT_BUMP: patch
+          INITIAL_VERSION: 2.0.1
+      - name: deploy
+        if: ${{ github.event_name == 'push' }}
+        uses: akhileshns/heroku-deploy@v3.12.12
+        with:
+          heroku_api_key: ${{secrets.HEROKU_API_KEY}}
+          heroku_app_name: ${{secrets.HEROKU_APP_NAME}}
+          heroku_email: ${{secrets.MY_EMAIL}}
+          healthcheck: 'https://fathomless-peak-08341.herokuapp.com/health'
+          checkstring: 'All systems are green!'
+          delay: 15
+          rollbackonhealthcheckfailed: true
