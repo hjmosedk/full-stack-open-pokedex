@@ -11,7 +11,7 @@ app.get('/health', (request, response) => {
 });
 
 app.get('/version', (request, response) => {
-  response.send('2');
+  response.send('2.0.1');
 });
 
 app.get('/helleWorld', (request, response) => {
