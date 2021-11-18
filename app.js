@@ -15,7 +15,7 @@ app.get('/version', (request, response) => {
 });
 
 app.get('/helloWorld', (request, response) => {
-  response.json({ hello: 'world' });
+  response.json({ hello: 'world+world' });
 });
 
 app.listen(PORT, () => {
