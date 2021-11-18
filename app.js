@@ -11,7 +11,11 @@ app.get('/health', (request, response) => {
 });
 
 app.get('/version', (request, response) => {
-  response.send('1.0.4');
+  response.send('2.0.1');
+});
+
+app.get('/helleWorld', (request, response) => {
+  response.json({ hello: 'world' });
 });
 
 app.listen(PORT, () => {
